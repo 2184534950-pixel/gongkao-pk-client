@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="zh-CN">
 
 <head>
@@ -19,8 +18,7 @@ body{
 
     color:white;
 
-    font-family:
-    Microsoft YaHei;
+    font-family:"Microsoft YaHei";
 
     text-align:center;
 
@@ -73,7 +71,6 @@ button{
 }
 
 
-
 #game{
 
     display:none;
@@ -88,7 +85,6 @@ button{
 }
 
 
-
 .enemy{
 
     color:#ffcc00;
@@ -96,12 +92,9 @@ button{
 }
 
 
-
 </style>
 
-
 </head>
-
 
 
 <body>
@@ -116,34 +109,29 @@ button{
 
 
 <button onclick="createRoom()">
-
 创建房间
-
 </button>
-
 
 
 <br>
 
 
-<input id="roomInput"
+<input 
+id="roomInput"
 placeholder="输入房间号">
 
 
 <button onclick="joinRoom()">
-
 加入房间
-
 </button>
 
 
-
-<p id="msg"></p>
+<p id="msg">
+正在连接服务器...
+</p>
 
 
 </div>
-
-
 
 
 
@@ -154,7 +142,6 @@ placeholder="输入房间号">
 <h2>
 在线PK
 </h2>
-
 
 
 <div>
@@ -170,7 +157,7 @@ placeholder="输入房间号">
 
 <div class="enemy">
 
-对手进度：
+对手：
 
 <span id="enemy">
 等待
@@ -179,20 +166,15 @@ placeholder="输入房间号">
 </div>
 
 
-
 <hr>
-
 
 
 <div id="question">
 
-
 </div>
 
 
-
 </div>
-
 
 
 
@@ -201,11 +183,11 @@ placeholder="输入房间号">
 
 
 // ====================
-// 连接服务器
+// 服务器连接
 // ====================
 
 
-let socket=
+let socket =
 new WebSocket(
 "wss://gongkao-pk-server.onrender.com"
 );
@@ -216,166 +198,13 @@ let myId=null;
 
 let room=null;
 
-
-let questions=[];
-
-
 let index=0;
-
 
 let score=0;
 
 
 
-socket.onmessage=function(e){
-
-
-    let data=
-    JSON.parse(e.data);
-
-
-
-    console.log(data);
-
-
-
-    // 获得房间
-
-    if(data.type==="room"){
-
-
-        room=data.room;
-
-        myId=data.player;
-
-
-        document.getElementById("msg")
-        .innerHTML=
-        "房间号："+room;
-
-
-    }
-
-
-
-    // 开始游戏
-
-
-    if(data.type==="start"){
-
-
-        document.getElementById("login")
-        .style.display="none";
-
-
-        document.getElementById("game")
-        .style.display="block";
-
-
-
-        loadQuestion();
-
-
-    }
-
-
-
-    // 对手信息
-
-
-    if(data.type==="enemy"){
-
-
-        document.getElementById("enemy")
-        .innerHTML=
-
-        "第"
-        +data.index+
-        "题 分数:"
-        +data.score;
-
-
-    }
-
-
-
-    // 自己结果
-
-
-    if(data.type==="result"){
-
-
-        document.getElementById("score")
-        .innerHTML=
-        data.score;
-
-
-    }
-
-
-};
-
-
-
-
-
-// ====================
-// 创建房间
-// ====================
-
-
-function createRoom(){
-
-
-    socket.send(JSON.stringify({
-
-        type:"create"
-
-    }));
-
-}
-
-
-
-
-
-// ====================
-// 加入房间
-// ====================
-
-
-function joinRoom(){
-
-
-    let r=
-    document.getElementById(
-    "roomInput"
-    ).value;
-
-
-
-    socket.send(JSON.stringify({
-
-        type:"join",
-
-        room:r
-
-    }));
-
-}
-
-
-
-
-
-
-// ====================
-// 测试题库
-// 后面换服务器题库
-// ====================
-
-
-questions=[
+let questions=[
 
 
 {
@@ -426,6 +255,277 @@ answer:1
 
 
 
+// ====================
+// 连接成功
+// ====================
+
+
+socket.onopen=function(){
+
+
+console.log(
+"服务器连接成功"
+);
+
+
+document.getElementById("msg")
+.innerHTML=
+"服务器连接成功";
+
+
+};
+
+
+
+
+
+socket.onerror=function(e){
+
+
+console.log(
+"连接错误",
+e
+);
+
+
+document.getElementById("msg")
+.innerHTML=
+"服务器连接失败";
+
+
+};
+
+
+
+
+
+// ====================
+// 接收服务器消息
+// ====================
+
+
+socket.onmessage=function(e){
+
+
+console.log(
+"收到服务器:",
+e.data
+);
+
+
+let data =
+JSON.parse(e.data);
+
+
+
+
+
+// 创建房间成功
+
+
+if(data.type==="room"){
+
+
+room=data.room;
+
+myId=data.player;
+
+
+
+document.getElementById("msg")
+.innerHTML=
+
+"房间号："+room;
+
+
+
+return;
+
+}
+
+
+
+
+
+
+// 开始游戏
+
+
+if(data.type==="start"){
+
+
+
+console.log(
+"游戏开始",
+data
+);
+
+
+
+document.getElementById("login")
+.style.display="none";
+
+
+
+document.getElementById("game")
+.style.display="block";
+
+
+
+setTimeout(()=>{
+
+
+loadQuestion();
+
+
+},300);
+
+
+
+return;
+
+}
+
+
+
+
+
+
+// 对手状态
+
+
+if(data.type==="enemy"){
+
+
+
+document.getElementById("enemy")
+.innerHTML=
+
+"第"+
+data.index+
+"题 分数:"+
+data.score;
+
+
+
+return;
+
+}
+
+
+
+
+
+
+// 自己得分
+
+
+if(data.type==="result"){
+
+
+
+document.getElementById("score")
+.innerHTML=
+data.score;
+
+
+return;
+
+}
+
+
+
+
+
+if(data.type==="error"){
+
+
+alert(data.msg);
+
+
+}
+
+
+
+};
+// ====================
+// 创建房间
+// ====================
+
+function createRoom(){
+
+
+    if(socket.readyState!==1){
+
+        alert("服务器未连接");
+
+        return;
+
+    }
+
+
+    socket.send(JSON.stringify({
+
+        type:"create"
+
+    }));
+
+}
+
+
+
+// ====================
+// 加入房间
+// ====================
+
+function joinRoom(){
+
+
+    if(socket.readyState!==1){
+
+        alert("服务器未连接");
+
+        return;
+
+    }
+
+
+
+    let r =
+    document.getElementById(
+        "roomInput"
+    ).value.trim();
+
+
+
+    if(!r){
+
+        alert("请输入房间号");
+
+        return;
+
+    }
+
+
+
+    console.log(
+        "发送加入:",
+        r
+    );
+
+
+
+    socket.send(JSON.stringify({
+
+        type:"join",
+
+        room:r
+
+    }));
+
+}
+
+
 
 // ====================
 // 显示题目
@@ -435,73 +535,74 @@ answer:1
 function loadQuestion(){
 
 
-if(index>=questions.length){
+
+    if(index>=questions.length){
 
 
-    socket.send(JSON.stringify({
 
-        type:"submit"
+        socket.send(JSON.stringify({
 
-    }));
+            type:"submit"
 
-
-    document.getElementById("question")
-    .innerHTML=
-    "答题完成";
+        }));
 
 
-    return;
+        document.getElementById(
+            "question"
+        ).innerHTML=
+        "答题完成";
+
+
+        return;
+
+    }
+
+
+
+
+    let q =
+    questions[index];
+
+
+
+    let html =
+
+    "<h2>"+
+    q.q+
+    "</h2>";
+
+
+
+
+    q.options.forEach(
+    (op,i)=>{
+
+
+        html +=
+
+        `
+
+        <button 
+        class="option"
+        onclick="answer(${i})">
+
+        ${op}
+
+        </button>
+
+        `;
+
+
+    });
+
+
+
+    document.getElementById(
+        "question"
+    ).innerHTML=html;
+
 
 }
-
-
-
-let q=
-questions[index];
-
-
-
-let html=
-
-"<h2>"
-+
-q.q+
-"</h2>";
-
-
-
-q.options.forEach(
-(op,i)=>{
-
-
-html+=
-
-`
-
-<button class="option"
-
-onclick="answer(${i})">
-
-${op}
-
-</button>
-
-`;
-
-
-});
-
-
-
-document.getElementById(
-"question"
-)
-.innerHTML=html;
-
-
-}
-
-
 
 
 
@@ -515,49 +616,56 @@ function answer(choice){
 
 
 
-let q=
-questions[index];
+    let q =
+    questions[index];
 
 
 
-let correct=
-choice===q.answer;
+    let correct =
+    choice===q.answer;
 
 
 
-socket.send(JSON.stringify({
 
-type:"answer",
+    socket.send(JSON.stringify({
 
-choice:choice,
+        type:"answer",
 
-correct:correct
+        choice:choice,
+
+        correct:correct
+
+    }));
 
 
-}));
 
 
 
-if(correct){
+    if(correct){
 
-score+=100;
+        score+=100;
+
+    }
+
+
+
+    index++;
+
+
+
+    setTimeout(()=>{
+
+
+        loadQuestion();
+
+
+    },500);
+
+
 
 }
 
 
-
-index++;
-
-
-setTimeout(()=>{
-
-loadQuestion();
-
-},500);
-
-
-
-}
 
 
 
