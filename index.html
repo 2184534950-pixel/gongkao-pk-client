@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>
+公务员行测竞技擂台
+</title>
+
+
+<style>
+
+body{
+
+    background:#101820;
+
+    color:white;
+
+    font-family:
+    Microsoft YaHei;
+
+    text-align:center;
+
+}
+
+
+.box{
+
+    width:600px;
+
+    margin:50px auto;
+
+    background:#ffffff22;
+
+    padding:30px;
+
+    border-radius:20px;
+
+}
+
+
+
+button{
+
+    width:80%;
+
+    padding:15px;
+
+    margin:10px;
+
+    border-radius:10px;
+
+    border:none;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+}
+
+
+.option{
+
+    background:#eee;
+
+    color:#222;
+
+    text-align:left;
+
+}
+
+
+
+#game{
+
+    display:none;
+
+}
+
+
+.score{
+
+    font-size:22px;
+
+}
+
+
+
+.enemy{
+
+    color:#ffcc00;
+
+}
+
+
+
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+<div class="box" id="login">
+
+
+<h1>
+公务员行测竞技擂台
+</h1>
+
+
+<button onclick="createRoom()">
+
+创建房间
+
+</button>
+
+
+
+<br>
+
+
+<input id="roomInput"
+placeholder="输入房间号">
+
+
+<button onclick="joinRoom()">
+
+加入房间
+
+</button>
+
+
+
+<p id="msg"></p>
+
+
+</div>
+
+
+
+
+
+
+<div class="box" id="game">
+
+
+<h2>
+在线PK
+</h2>
+
+
+
+<div>
+
+你的分数：
+
+<span id="score">
+0
+</span>
+
+</div>
+
+
+<div class="enemy">
+
+对手进度：
+
+<span id="enemy">
+等待
+</span>
+
+</div>
+
+
+
+<hr>
+
+
+
+<div id="question">
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+// ====================
+// 连接服务器
+// ====================
+
+
+let socket=
+new WebSocket(
+"wss://gongkao-pk-server.onrender.com"
+);
+
+
+
+let myId=null;
+
+let room=null;
+
+
+let questions=[];
+
+
+let index=0;
+
+
+let score=0;
+
+
+
+socket.onmessage=function(e){
+
+
+    let data=
+    JSON.parse(e.data);
+
+
+
+    console.log(data);
+
+
+
+    // 获得房间
+
+    if(data.type==="room"){
+
+
+        room=data.room;
+
+        myId=data.player;
+
+
+        document.getElementById("msg")
+        .innerHTML=
+        "房间号："+room;
+
+
+    }
+
+
+
+    // 开始游戏
+
+
+    if(data.type==="start"){
+
+
+        document.getElementById("login")
+        .style.display="none";
+
+
+        document.getElementById("game")
+        .style.display="block";
+
+
+
+        loadQuestion();
+
+
+    }
+
+
+
+    // 对手信息
+
+
+    if(data.type==="enemy"){
+
+
+        document.getElementById("enemy")
+        .innerHTML=
+
+        "第"
+        +data.index+
+        "题 分数:"
+        +data.score;
+
+
+    }
+
+
+
+    // 自己结果
+
+
+    if(data.type==="result"){
+
+
+        document.getElementById("score")
+        .innerHTML=
+        data.score;
+
+
+    }
+
+
+};
+
+
+
+
+
+// ====================
+// 创建房间
+// ====================
+
+
+function createRoom(){
+
+
+    socket.send(JSON.stringify({
+
+        type:"create"
+
+    }));
+
+}
+
+
+
+
+
+// ====================
+// 加入房间
+// ====================
+
+
+function joinRoom(){
+
+
+    let r=
+    document.getElementById(
+    "roomInput"
+    ).value;
+
+
+
+    socket.send(JSON.stringify({
+
+        type:"join",
+
+        room:r
+
+    }));
+
+}
+
+
+
+
+
+
+// ====================
+// 测试题库
+// 后面换服务器题库
+// ====================
+
+
+questions=[
+
+
+{
+
+q:"我国最高国家权力机关是？",
+
+options:[
+
+"国务院",
+
+"最高人民法院",
+
+"全国人民代表大会",
+
+"国家监察委员会"
+
+],
+
+answer:2
+
+},
+
+
+{
+
+q:"3×5等于？",
+
+options:[
+
+"10",
+
+"15",
+
+"20",
+
+"25"
+
+],
+
+answer:1
+
+}
+
+
+];
+
+
+
+
+
+
+// ====================
+// 显示题目
+// ====================
+
+
+function loadQuestion(){
+
+
+if(index>=questions.length){
+
+
+    socket.send(JSON.stringify({
+
+        type:"submit"
+
+    }));
+
+
+    document.getElementById("question")
+    .innerHTML=
+    "答题完成";
+
+
+    return;
+
+}
+
+
+
+let q=
+questions[index];
+
+
+
+let html=
+
+"<h2>"
++
+q.q+
+"</h2>";
+
+
+
+q.options.forEach(
+(op,i)=>{
+
+
+html+=
+
+`
+
+<button class="option"
+
+onclick="answer(${i})">
+
+${op}
+
+</button>
+
+`;
+
+
+});
+
+
+
+document.getElementById(
+"question"
+)
+.innerHTML=html;
+
+
+}
+
+
+
+
+
+
+// ====================
+// 答题
+// ====================
+
+
+function answer(choice){
+
+
+
+let q=
+questions[index];
+
+
+
+let correct=
+choice===q.answer;
+
+
+
+socket.send(JSON.stringify({
+
+type:"answer",
+
+choice:choice,
+
+correct:correct
+
+
+}));
+
+
+
+if(correct){
+
+score+=100;
+
+}
+
+
+
+index++;
+
+
+setTimeout(()=>{
+
+loadQuestion();
+
+},500);
+
+
+
+}
+
+
+
+</script>
+
+
+</body>
+
+</html>
