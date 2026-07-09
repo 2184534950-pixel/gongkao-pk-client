@@ -14,25 +14,25 @@
 
 
 *{
-    box-sizing:border-box;
+box-sizing:border-box;
 }
 
 
 body{
 
-    margin:0;
+margin:0;
 
-    min-height:100vh;
+min-height:100vh;
 
-    background:
-    radial-gradient(circle at top,#1e3c72,#101820 60%);
+background:
+radial-gradient(circle at top,#1e3c72,#101820 60%);
 
-    color:white;
+color:white;
 
-    font-family:
-    "Microsoft YaHei",
-    Arial,
-    sans-serif;
+font-family:
+"Microsoft YaHei",
+Arial,
+sans-serif;
 
 }
 
@@ -40,11 +40,11 @@ body{
 
 .container{
 
-    width:900px;
+width:900px;
 
-    max-width:95%;
+max-width:95%;
 
-    margin:40px auto;
+margin:40px auto;
 
 }
 
@@ -52,14 +52,14 @@ body{
 
 .title{
 
-    text-align:center;
+text-align:center;
 
-    font-size:48px;
+font-size:48px;
 
-    font-weight:bold;
+font-weight:bold;
 
-    text-shadow:
-    0 0 15px #00ffff;
+text-shadow:
+0 0 15px #00ffff;
 
 }
 
@@ -67,46 +67,57 @@ body{
 
 .subtitle{
 
-    text-align:center;
+text-align:center;
 
-    color:#ffd700;
+color:#ffd700;
 
-    font-size:20px;
+font-size:20px;
 
-    margin-bottom:30px;
+margin-bottom:30px;
 
 }
+
 
 
 
 .card{
 
-    background:
-    rgba(255,255,255,.12);
 
-    border:
-    1px solid rgba(255,255,255,.2);
+background:
+rgba(255,255,255,.12);
 
-    border-radius:25px;
 
-    padding:30px;
+border:
+1px solid rgba(255,255,255,.2);
 
-    margin-bottom:25px;
 
-    box-shadow:
-    0 0 30px #0008;
+border-radius:25px;
+
+
+padding:30px;
+
+
+margin-bottom:25px;
+
+
+box-shadow:
+0 0 30px #0008;
+
 
 }
 
 
 
+
 .playerPanel{
 
-    display:flex;
 
-    justify-content:space-around;
+display:flex;
 
-    text-align:center;
+justify-content:space-around;
+
+text-align:center;
+
 
 }
 
@@ -114,45 +125,60 @@ body{
 
 .stat{
 
-    font-size:22px;
+font-size:22px;
 
 }
+
 
 
 .stat span{
 
-    display:block;
 
-    font-size:36px;
+display:block;
 
-    color:#ffd700;
 
-    margin-top:10px;
+font-size:36px;
+
+
+color:#ffd700;
+
+
+margin-top:10px;
+
 
 }
+
 
 
 
 button{
 
 
-    width:80%;
+width:80%;
 
-    max-width:400px;
 
-    padding:16px;
+max-width:400px;
 
-    margin:12px;
 
-    border:none;
+padding:16px;
 
-    border-radius:15px;
 
-    font-size:20px;
+margin:12px;
 
-    cursor:pointer;
 
-    transition:.2s;
+border:none;
+
+
+border-radius:15px;
+
+
+font-size:20px;
+
+
+cursor:pointer;
+
+
+transition:.2s;
 
 
 }
@@ -161,23 +187,27 @@ button{
 
 button:hover{
 
-    transform:scale(1.05);
+transform:scale(1.05);
 
 }
 
 
 
+
 .modeBtn{
 
-    background:
 
-    linear-gradient(
-    135deg,
-    #3498db,
-    #8e44ad
-    );
+background:
 
-    color:white;
+linear-gradient(
+135deg,
+#3498db,
+#8e44ad
+);
+
+
+color:white;
+
 
 }
 
@@ -185,71 +215,87 @@ button:hover{
 
 .optionBtn{
 
-    background:#eeeeee;
 
-    color:#222;
+background:#eeeeee;
+
+
+color:#222;
+
 
 }
+
 
 
 
 .goldBtn{
 
-    background:
 
-    linear-gradient(
-    135deg,
-    #f1c40f,
-    #e67e22
-    );
+background:
+
+linear-gradient(
+135deg,
+#f1c40f,
+#e67e22
+);
 
 
 }
+
 
 
 
 .hidden{
 
-    display:none;
+display:none;
 
 }
+
 
 
 
 #game{
 
-    display:none;
+display:none;
 
 }
+
 
 
 
 .questionBox{
 
-    background:white;
 
-    color:#222;
+background:white;
 
-    border-radius:20px;
 
-    padding:25px;
+color:#222;
+
+
+border-radius:20px;
+
+
+padding:25px;
+
 
 }
 
 
 
+
 .enemy{
 
-    color:#ffd700;
 
-    font-size:20px;
+color:#ffd700;
+
+
+font-size:20px;
+
 
 }
 
 
 
 </style>
-
 
 </head>
 
@@ -281,6 +327,7 @@ button:hover{
 
 
 
+
 <div class="card">
 
 
@@ -289,7 +336,9 @@ button:hover{
 </h2>
 
 
+
 <div class="playerPanel">
+
 
 
 <div class="stat">
@@ -303,6 +352,7 @@ button:hover{
 </div>
 
 
+
 <div class="stat">
 
 对局次数
@@ -312,6 +362,8 @@ button:hover{
 </span>
 
 </div>
+
+
 
 
 <div class="stat">
@@ -325,10 +377,15 @@ button:hover{
 </div>
 
 
+
 </div>
 
 
 </div>
+
+
+
+
 
 <div class="card">
 
@@ -336,6 +393,8 @@ button:hover{
 <h2>
 选择PK模式
 </h2>
+
+
 
 
 <button class="modeBtn"
@@ -346,12 +405,15 @@ onclick="createGame('special')">
 </button>
 
 
+
+
 <button class="modeBtn"
 onclick="createGame('quarter')">
 
 四分之一套卷PK
 
 </button>
+
 
 
 
@@ -364,6 +426,7 @@ onclick="createGame('half')">
 
 
 
+
 <button class="goldBtn"
 onclick="createGame('full')">
 
@@ -372,7 +435,10 @@ onclick="createGame('full')">
 </button>
 
 
+
 </div>
+
+
 
 
 
@@ -382,6 +448,7 @@ onclick="createGame('full')">
 <h2>
 加入好友房间
 </h2>
+
 
 
 <input
@@ -399,11 +466,13 @@ border:none;
 <br>
 
 
+
 <button onclick="joinRoom()">
 
 加入房间
 
 </button>
+
 
 
 <p id="msg">
@@ -417,8 +486,8 @@ border:none;
 </div>
 
 
-</div>
 
+</div>
 
 
 
@@ -445,7 +514,9 @@ border:none;
 
 
 
+
 <div class="playerPanel">
+
 
 
 <div>
@@ -453,7 +524,9 @@ border:none;
 
 你的积分
 
+
 <div class="stat">
+
 
 <span id="score">
 
@@ -461,10 +534,12 @@ border:none;
 
 </span>
 
+
 </div>
 
 
 </div>
+
 
 
 
@@ -488,11 +563,12 @@ border:none;
 
 
 
-</div>
-
-
 
 </div>
+
+
+</div>
+
 
 
 
@@ -509,18 +585,19 @@ border:none;
 </div>
 
 
-
-</div>
-
-
 </div>
 
 
 
+</div>
+
+
+
 
 
 
 </div>
+
 
 
 
@@ -529,6 +606,7 @@ border:none;
 
 
 <script>
+
 
 
 
@@ -544,6 +622,8 @@ let socket = new WebSocket(
 "wss://gongkao-pk-server.onrender.com"
 
 );
+
+
 
 
 
@@ -566,14 +646,14 @@ let score=0;
 
 
 
-
-
 // =========================
 // 连接成功
 // =========================
 
 
+
 socket.onopen=function(){
+
 
 
 document.getElementById("msg")
@@ -581,6 +661,7 @@ document.getElementById("msg")
 .innerHTML=
 
 "服务器连接成功";
+
 
 
 };
@@ -592,6 +673,7 @@ document.getElementById("msg")
 
 
 socket.onerror=function(){
+
 
 
 document.getElementById("msg")
@@ -609,9 +691,12 @@ document.getElementById("msg")
 
 
 
+
+
 // =========================
 // 接收服务器消息
 // =========================
+
 
 
 socket.onmessage=function(e){
@@ -621,6 +706,8 @@ socket.onmessage=function(e){
 let data=
 
 JSON.parse(e.data);
+
+
 
 
 
@@ -636,10 +723,14 @@ data
 
 
 
+
+
+
 // 创建房间成功
 
 
 if(data.type==="room"){
+
 
 
 room=data.room;
@@ -649,9 +740,12 @@ myId=data.player;
 
 
 
+
+
 document.getElementById("msg")
 
 .innerHTML=
+
 
 "房间号："+room;
 
@@ -661,6 +755,8 @@ return;
 
 
 }
+
+
 
 
 
@@ -698,8 +794,10 @@ return;
 
 
 
+
+
 // =========================
-// 服务器发送题目
+// 服务器发题
 // =========================
 
 
@@ -734,7 +832,8 @@ return;
 
 
 
-// 对手信息
+
+// 对手状态
 
 
 if(data.type==="enemy"){
@@ -744,6 +843,7 @@ if(data.type==="enemy"){
 document.getElementById("enemy")
 
 .innerHTML=
+
 
 "第"+
 
@@ -767,7 +867,7 @@ return;
 
 
 
-// 得分
+// 自己得分
 
 
 if(data.type==="result"){
@@ -796,20 +896,83 @@ return;
 
 
 
-if(data.type==="error"){
+
+// 答题完成
 
 
-alert(data.msg);
+if(data.type==="finishQuestion"){
+
+
+
+document.getElementById("question")
+
+.innerHTML=
+
+"答题完成，等待比赛结果";
+
+
+
+return;
 
 
 }
 
 
 
+
+
+
+
+// 比赛结束
+
+
+if(data.type==="finish"){
+
+
+
+alert(
+
+"玩家"+
+
+data.player+
+
+"提交完成"
+
+);
+
+
+
+return;
+
+
+}
+
+
+
+
+
+
+
+// 错误
+
+
+if(data.type==="error"){
+
+
+alert(data.msg);
+
+
+
+return;
+
+
+}
+
+
+
+
+
 };
-
-
-
 
 
 // =========================
@@ -821,34 +984,41 @@ function createGame(mode){
 
 
 
-if(socket.readyState!==1){
+    if(socket.readyState!==1){
 
 
-alert("服务器未连接");
+        alert("服务器未连接");
 
 
-return;
+        return;
+
+
+    }
+
+
+
+
+
+
+    socket.send(JSON.stringify({
+
+
+
+        type:"create",
+
+
+
+        mode:mode
+
+
+
+    }));
+
 
 
 }
 
 
-
-
-socket.send(JSON.stringify({
-
-
-type:"create",
-
-
-mode:mode
-
-
-}));
-
-
-
-}
 
 
 
@@ -865,23 +1035,50 @@ function joinRoom(){
 
 
 
-let r=
+    let r =
 
-document.getElementById("roomInput")
+    document.getElementById(
 
-.value.trim();
+        "roomInput"
 
-
-
-
-
-if(!r){
+    ).value.trim();
 
 
-alert("请输入房间号");
 
 
-return;
+
+
+
+    if(!r){
+
+
+        alert("请输入房间号");
+
+
+        return;
+
+
+    }
+
+
+
+
+
+
+    socket.send(JSON.stringify({
+
+
+
+        type:"join",
+
+
+
+        room:r
+
+
+
+    }));
+
 
 
 }
@@ -889,20 +1086,10 @@ return;
 
 
 
-socket.send(JSON.stringify({
-
-
-type:"join",
-
-
-room:r
-
-
-}));
 
 
 
-}
+
 
 // =========================
 // 显示服务器题目
@@ -912,11 +1099,15 @@ room:r
 function showQuestion(){
 
 
+
     let q=currentQuestion;
 
 
 
+
+
     let html=
+
 
 
     "<h2>"+
@@ -933,7 +1124,12 @@ function showQuestion(){
 
 
 
+
+
+
+
     html+=
+
 
 
     "<h3>"+
@@ -946,10 +1142,16 @@ function showQuestion(){
 
 
 
+
+
     q.options.forEach((op,i)=>{
 
 
+
+
+
         html+=`
+
 
 
         <button
@@ -965,10 +1167,14 @@ function showQuestion(){
         </button>
 
 
+
         `;
 
 
+
     });
+
+
 
 
 
@@ -981,7 +1187,10 @@ function showQuestion(){
     ).innerHTML=html;
 
 
+
 }
+
+
 
 
 
@@ -998,18 +1207,31 @@ function answer(choice){
 
 
 
-    if(!currentQuestion)return;
+    if(!currentQuestion){
+
+
+        return;
+
+
+    }
+
+
+
 
 
 
 
     let buttons=
 
+
     document.querySelectorAll(
 
-    ".optionBtn"
+        ".optionBtn"
 
     );
+
+
+
 
 
 
@@ -1020,6 +1242,10 @@ function answer(choice){
 
 
     });
+
+
+
+
 
 
 
@@ -1042,21 +1268,6 @@ function answer(choice){
 
 
 
-    setTimeout(()=>{
-
-
-        document.getElementById(
-
-        "question"
-
-        ).innerHTML=
-
-
-        "等待下一题...";
-
-
-
-    },500);
 
 
 
@@ -1064,53 +1275,6 @@ function answer(choice){
 
 
 
-
-
-
-
-
-
-// =========================
-// 游戏结束
-// =========================
-
-
-socket.addEventListener(
-
-"message",
-
-function(e){
-
-
-
-let data=
-
-JSON.parse(e.data);
-
-
-
-
-if(data.type==="finish"){
-
-
-
-    alert(
-
-    "玩家"+
-
-    data.player+
-
-    "提交完成"
-
-    );
-
-
-
-}
-
-
-
-});
 
 
 
@@ -1129,38 +1293,68 @@ function saveHistory(win){
 
 
 
-let history=
+    let history=
 
 
-JSON.parse(
-
-localStorage.getItem(
-
-"pkHistory"
-
-)||
-
-'{"score":0,"count":0,"win":0}'
-
-);
+    JSON.parse(
 
 
+        localStorage.getItem(
+
+            "pkHistory"
+
+        )
+
+        ||
+
+        '{"score":0,"count":0,"win":0}'
 
 
-
-history.count++;
-
+    );
 
 
 
 
-if(win){
 
 
-history.score+=10;
+
+    history.count++;
 
 
-history.win++;
+
+
+
+
+
+    if(win){
+
+
+
+        history.score+=10;
+
+
+        history.win++;
+
+
+    }
+
+
+
+
+
+
+
+    localStorage.setItem(
+
+
+        "pkHistory",
+
+
+        JSON.stringify(history)
+
+
+    );
+
 
 
 }
@@ -1168,19 +1362,6 @@ history.win++;
 
 
 
-
-
-localStorage.setItem(
-
-"pkHistory",
-
-JSON.stringify(history)
-
-);
-
-
-
-}
 
 
 
@@ -1195,81 +1376,107 @@ function loadHistory(){
 
 
 
-let history=
+    let history=
 
 
-JSON.parse(
-
-localStorage.getItem(
-
-"pkHistory"
-
-)||
-
-'{"score":0,"count":0,"win":0}'
-
-);
+    JSON.parse(
 
 
+        localStorage.getItem(
+
+            "pkHistory"
+
+        )
+
+        ||
+
+        '{"score":0,"count":0,"win":0}'
 
 
-
-document.getElementById(
-
-"scoreHistory"
-
-).innerHTML=
-
-history.score;
+    );
 
 
 
 
 
-document.getElementById(
-
-"gameCount"
-
-).innerHTML=
-
-history.count;
 
 
+    document.getElementById(
 
+        "scoreHistory"
 
+    ).innerHTML=
 
-let rate=0;
+    history.score;
 
 
 
-if(history.count>0){
 
 
-rate=
 
-Math.round(
 
-history.win/history.count*100
 
-);
+    document.getElementById(
+
+        "gameCount"
+
+    ).innerHTML=
+
+    history.count;
+
+
+
+
+
+
+
+    let rate=0;
+
+
+
+
+
+
+    if(history.count>0){
+
+
+
+        rate=Math.round(
+
+
+            history.win /
+
+            history.count *
+
+            100
+
+
+        );
+
+
+
+    }
+
+
+
+
+
+
+
+
+    document.getElementById(
+
+        "winRate"
+
+    ).innerHTML=
+
+    rate+"%";
+
 
 
 }
 
 
-
-
-document.getElementById(
-
-"winRate"
-
-).innerHTML=
-
-rate+"%";
-
-
-
-}
 
 
 
@@ -1280,9 +1487,12 @@ loadHistory();
 
 
 
+
+
 </script>
 
 
 </body>
+
 
 </html>
