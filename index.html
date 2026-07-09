@@ -38,11 +38,6 @@ body{
 
 
 
-/* ====================
-大厅
-==================== */
-
-
 .container{
 
     width:900px;
@@ -84,43 +79,28 @@ body{
 
 
 
-
-
 .card{
 
-
     background:
-
     rgba(255,255,255,.12);
 
-
     border:
-
     1px solid rgba(255,255,255,.2);
-
 
     border-radius:25px;
 
-
     padding:30px;
-
 
     margin-bottom:25px;
 
-
     box-shadow:
-
     0 0 30px #0008;
-
 
 }
 
 
 
-
-
 .playerPanel{
-
 
     display:flex;
 
@@ -128,40 +108,28 @@ body{
 
     text-align:center;
 
-
 }
 
 
 
 .stat{
 
-
     font-size:22px;
 
-
 }
-
 
 
 .stat span{
 
-
     display:block;
-
 
     font-size:36px;
 
-
     color:#ffd700;
-
 
     margin-top:10px;
 
-
 }
-
-
-
 
 
 
@@ -174,21 +142,15 @@ button{
 
     padding:16px;
 
-
     margin:12px;
-
 
     border:none;
 
-
     border-radius:15px;
-
 
     font-size:20px;
 
-
     cursor:pointer;
-
 
     transition:.2s;
 
@@ -199,18 +161,13 @@ button{
 
 button:hover{
 
-
     transform:scale(1.05);
-
 
 }
 
 
 
-
-
 .modeBtn{
-
 
     background:
 
@@ -220,32 +177,23 @@ button:hover{
     #8e44ad
     );
 
-
     color:white;
 
-
 }
-
-
 
 
 
 .optionBtn{
 
-
     background:#eeeeee;
 
     color:#222;
-
 
 }
 
 
 
-
-
 .goldBtn{
-
 
     background:
 
@@ -260,8 +208,6 @@ button:hover{
 
 
 
-
-
 .hidden{
 
     display:none;
@@ -270,18 +216,9 @@ button:hover{
 
 
 
-
-
-/* ====================
-PK界面
-==================== */
-
-
 #game{
 
-
     display:none;
-
 
 }
 
@@ -289,17 +226,13 @@ PK界面
 
 .questionBox{
 
-
     background:white;
 
     color:#222;
 
-
     border-radius:20px;
 
-
     padding:25px;
-
 
 }
 
@@ -307,9 +240,7 @@ PK界面
 
 .enemy{
 
-
     color:#ffd700;
-
 
     font-size:20px;
 
@@ -317,12 +248,10 @@ PK界面
 
 
 
-
 </style>
 
 
 </head>
-
 
 
 <body>
@@ -333,13 +262,7 @@ PK界面
 
 
 
-<!-- ====================
-竞技大厅
-==================== -->
-
-
 <div id="hall">
-
 
 
 <h1 class="title">
@@ -358,16 +281,12 @@ PK界面
 
 
 
-
 <div class="card">
 
 
 <h2>
-
 我的战绩
-
 </h2>
-
 
 
 <div class="playerPanel">
@@ -378,13 +297,10 @@ PK界面
 竞技积分
 
 <span id="scoreHistory">
-
 0
-
 </span>
 
 </div>
-
 
 
 <div class="stat">
@@ -392,13 +308,10 @@ PK界面
 对局次数
 
 <span id="gameCount">
-
 0
-
 </span>
 
 </div>
-
 
 
 <div class="stat">
@@ -406,21 +319,60 @@ PK界面
 胜率
 
 <span id="winRate">
-
 0%
-
 </span>
 
 </div>
 
 
-
 </div>
 
 
 </div>
 
+<div class="card">
 
+
+<h2>
+选择PK模式
+</h2>
+
+
+<button class="modeBtn"
+onclick="createGame('special')">
+
+分类专项PK
+
+</button>
+
+
+<button class="modeBtn"
+onclick="createGame('quarter')">
+
+四分之一套卷PK
+
+</button>
+
+
+
+<button class="modeBtn"
+onclick="createGame('half')">
+
+二分之一套卷PK
+
+</button>
+
+
+
+<button class="goldBtn"
+onclick="createGame('full')">
+
+完整120题套卷PK
+
+</button>
+
+
+</div>
 
 
 
@@ -428,206 +380,30 @@ PK界面
 
 
 <h2>
-
-选择PK模式
-
+加入好友房间
 </h2>
-
-
-
-<button 
-class="modeBtn"
-onclick="showSpecial()">
-
-专项突破
-
-</button>
-
-
-
-<button 
-class="modeBtn"
-onclick="showPaper()">
-
-套卷竞技
-
-</button>
-
-
-
-</div>
-
-
-
-
-
-<!-- 专项选择 -->
-
-
-<div 
-id="specialPanel"
-class="card hidden">
-
-
-<h2>
-
-专项PK
-
-</h2>
-
-
-
-<button 
-class="optionBtn"
-onclick="selectMode('常识判断')">
-
-常识判断
-
-</button>
-
-
-
-<button 
-class="optionBtn"
-onclick="selectMode('言语理解')">
-
-言语理解与表达
-
-</button>
-
-
-
-<button 
-class="optionBtn"
-onclick="selectMode('数量关系')">
-
-数量关系
-
-</button>
-
-
-
-<button 
-class="optionBtn"
-onclick="selectMode('判断推理')">
-
-判断推理
-
-</button>
-
-
-
-<button 
-class="optionBtn"
-onclick="selectMode('资料分析')">
-
-资料分析
-
-</button>
-
-
-
-</div>
-
-
-
-
-
-<!-- 套卷选择 -->
-
-
-<div 
-id="paperPanel"
-class="card hidden">
-
-
-<h2>
-
-套卷竞技
-
-</h2>
-
-
-
-<button
-class="optionBtn"
-onclick="selectPaper(30)">
-
-¼套卷 30题
-
-</button>
-
-
-
-<button
-class="optionBtn"
-onclick="selectPaper(60)">
-
-½套卷 60题
-
-</button>
-
-
-
-<button
-class="optionBtn"
-onclick="selectPaper(120)">
-
-完整套卷 120题
-
-</button>
-
-
-
-</div>
-
-
-
-
-
-<div 
-id="roomPanel"
-class="card hidden">
-
-
-<h2 id="modeText">
-
-</h2>
-
-
-
-<p>
-
-选择完成，请创建房间或加入房间
-
-</p>
-
-
-
-<button
-class="goldBtn"
-onclick="createRoom()">
-
-创建房间
-
-</button>
-
 
 
 <input
 id="roomInput"
-placeholder="输入房间号">
+placeholder="输入6位房间号"
+style="
+padding:15px;
+width:80%;
+font-size:18px;
+border-radius:10px;
+border:none;
+">
 
 
+<br>
 
-<button
-class="goldBtn"
-onclick="joinRoom()">
+
+<button onclick="joinRoom()">
 
 加入房间
 
 </button>
-
 
 
 <p id="msg">
@@ -637,43 +413,55 @@ onclick="joinRoom()">
 </p>
 
 
-</div>
-
-
 
 </div>
 
 
+</div>
 
 
 
 
-<!-- ====================
-PK答题界面
-==================== -->
 
 
-<div id="game" class="card">
 
+<!-- =========================
+     游戏界面
+========================= -->
+
+
+<div id="game">
+
+
+
+<div class="card">
 
 
 <h2>
 
-⚔ 在线PK
+在线竞技中
 
 </h2>
 
 
 
+<div class="playerPanel">
+
+
 <div>
 
-我的积分：
+
+你的积分
+
+<div class="stat">
 
 <span id="score">
 
 0
 
 </span>
+
+</div>
 
 
 </div>
@@ -684,7 +472,10 @@ PK答题界面
 <div class="enemy">
 
 
-对手状态：
+对手状态
+
+<br>
+
 
 <span id="enemy">
 
@@ -697,14 +488,6 @@ PK答题界面
 
 
 
-<hr>
-
-
-
-<div 
-id="question"
-class="questionBox">
-
 </div>
 
 
@@ -715,8 +498,29 @@ class="questionBox">
 
 
 
+
+<div class="card questionBox">
+
+
+<div id="question">
+
+等待服务器出题...
+
 </div>
 
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+</div>
 
 
 
@@ -729,9 +533,10 @@ class="questionBox">
 
 
 
-// ====================
+// =========================
 // WebSocket服务器
-// ====================
+// =========================
+
 
 
 let socket = new WebSocket(
@@ -742,136 +547,33 @@ let socket = new WebSocket(
 
 
 
+let room=null;
+
 
 let myId=null;
 
 
-let room=null;
+let currentQuestion=null;
 
 
-
-let mode=null;
-
-
-let category=null;
-
-
-let questionCount=0;
-
-
-
-
-let index=0;
+let currentIndex=0;
 
 
 let score=0;
 
 
 
-let questions=[];
 
 
 
 
 
-// ====================
-// 测试题库
-// 后面替换服务器题库
-// ====================
-
-
-let questionBank=[
-
-
-{
-
-category:"常识判断",
-
-q:"我国最高国家权力机关是？",
-
-options:[
-
-"国务院",
-
-"最高人民法院",
-
-"全国人民代表大会",
-
-"国家监察委员会"
-
-],
-
-answer:2
-
-},
-
-
-
-{
-
-category:"数量关系",
-
-q:"3×5等于？",
-
-options:[
-
-"10",
-
-"15",
-
-"20",
-
-"25"
-
-],
-
-answer:1
-
-},
-
-
-
-{
-
-category:"判断推理",
-
-q:"以下属于从众行为的是？",
-
-options:[
-
-"独立思考",
-
-"跟随多数人选择",
-
-"坚持观点",
-
-"自主决定"
-
-],
-
-answer:1
-
-}
-
-
-
-];
-
-
-
-
-
-// ====================
-// socket连接成功
-// ====================
+// =========================
+// 连接成功
+// =========================
 
 
 socket.onopen=function(){
-
-
-console.log(
-"服务器连接成功"
-);
 
 
 document.getElementById("msg")
@@ -881,15 +583,15 @@ document.getElementById("msg")
 "服务器连接成功";
 
 
-
 };
 
 
 
 
 
-socket.onerror=function(){
 
+
+socket.onerror=function(){
 
 
 document.getElementById("msg")
@@ -899,7 +601,6 @@ document.getElementById("msg")
 "服务器连接失败";
 
 
-
 };
 
 
@@ -908,33 +609,37 @@ document.getElementById("msg")
 
 
 
-// ====================
+// =========================
 // 接收服务器消息
-// ====================
+// =========================
 
 
 socket.onmessage=function(e){
 
 
 
+let data=
+
+JSON.parse(e.data);
+
+
+
 console.log(
-"服务器:",
-e.data
+
+"服务器消息:",
+
+data
+
 );
 
 
 
-let data=JSON.parse(e.data);
 
 
-
-
-
-// 创建房间
+// 创建房间成功
 
 
 if(data.type==="room"){
-
 
 
 room=data.room;
@@ -961,17 +666,12 @@ return;
 
 
 
-// 双方开始
+
+
+// 游戏开始
 
 
 if(data.type==="start"){
-
-
-
-console.log(
-"开始PK",
-data
-);
 
 
 
@@ -987,7 +687,39 @@ document.getElementById("game")
 
 
 
-loadQuestion();
+return;
+
+
+}
+
+
+
+
+
+
+
+// =========================
+// 服务器发送题目
+// =========================
+
+
+if(data.type==="question"){
+
+
+
+currentQuestion=
+
+data.question;
+
+
+
+currentIndex=
+
+data.index;
+
+
+
+showQuestion();
 
 
 
@@ -1000,7 +732,9 @@ return;
 
 
 
-// 对手状态
+
+
+// 对手信息
 
 
 if(data.type==="enemy"){
@@ -1015,7 +749,7 @@ document.getElementById("enemy")
 
 data.index+
 
-"题 分数："+
+"题&nbsp;&nbsp;积分:"+
 
 data.score;
 
@@ -1030,10 +764,17 @@ return;
 
 
 
-// 自己分数
+
+
+
+// 得分
 
 
 if(data.type==="result"){
+
+
+
+score=data.score;
 
 
 
@@ -1041,7 +782,7 @@ document.getElementById("score")
 
 .innerHTML=
 
-data.score;
+score;
 
 
 
@@ -1049,6 +790,7 @@ return;
 
 
 }
+
 
 
 
@@ -1057,9 +799,7 @@ return;
 if(data.type==="error"){
 
 
-
 alert(data.msg);
-
 
 
 }
@@ -1072,184 +812,26 @@ alert(data.msg);
 
 
 
-
-
-
-
-// ====================
-// 选择专项模式
-// ====================
-
-
-function showSpecial(){
-
-
-
-document.getElementById(
-"specialPanel"
-)
-
-.classList.remove("hidden");
-
-
-
-document.getElementById(
-"paperPanel"
-)
-
-.classList.add("hidden");
-
-
-}
-
-
-
-
-
-// ====================
-// 选择套卷
-// ====================
-
-
-function showPaper(){
-
-
-
-document.getElementById(
-"paperPanel"
-)
-
-.classList.remove("hidden");
-
-
-
-document.getElementById(
-"specialPanel"
-)
-
-.classList.add("hidden");
-
-
-}
-
-
-
-
-
-
-
-// ====================
-// 选择专项
-// ====================
-
-
-function selectMode(c){
-
-
-
-mode="special";
-
-
-category=c;
-
-
-questionCount=20;
-
-
-
-openRoomPanel();
-
-
-
-}
-
-
-
-
-
-// ====================
-// 选择套卷
-// ====================
-
-
-function selectPaper(num){
-
-
-
-mode="paper";
-
-
-questionCount=num;
-
-
-openRoomPanel();
-
-
-}
-
-
-
-
-
-
-function openRoomPanel(){
-
-
-
-document.getElementById(
-"roomPanel"
-)
-
-.classList.remove("hidden");
-
-
-
-document.getElementById(
-"modeText"
-)
-
-.innerHTML=
-
-mode==="special"
-
-?
-
-"专项："+category+" 20题"
-
-:
-
-"套卷："+questionCount+"题";
-
-
-
-}
-
-
-
-
-
-
-// ====================
+// =========================
 // 创建房间
-// ====================
+// =========================
 
 
-function createRoom(){
+function createGame(mode){
 
 
 
 if(socket.readyState!==1){
 
 
-alert(
-"服务器未连接"
-);
+alert("服务器未连接");
 
 
 return;
 
 
 }
+
 
 
 
@@ -1259,14 +841,7 @@ socket.send(JSON.stringify({
 type:"create",
 
 
-mode:mode,
-
-
-category:category,
-
-
-count:questionCount
-
+mode:mode
 
 
 }));
@@ -1280,20 +855,22 @@ count:questionCount
 
 
 
-// ====================
+
+// =========================
 // 加入房间
-// ====================
+// =========================
 
 
 function joinRoom(){
 
 
 
-let r=document.getElementById(
+let r=
 
-"roomInput"
+document.getElementById("roomInput")
 
-).value.trim();
+.value.trim();
+
 
 
 
@@ -1301,9 +878,7 @@ let r=document.getElementById(
 if(!r){
 
 
-alert(
-"请输入房间号"
-);
+alert("请输入房间号");
 
 
 return;
@@ -1313,23 +888,14 @@ return;
 
 
 
+
 socket.send(JSON.stringify({
 
 
 type:"join",
 
 
-room:r,
-
-
-mode:mode,
-
-
-category:category,
-
-
-count:questionCount
-
+room:r
 
 
 }));
@@ -1338,129 +904,53 @@ count:questionCount
 
 }
 
+// =========================
+// 显示服务器题目
+// =========================
 
-// ====================
-// 加载题目
-// ====================
 
+function showQuestion(){
 
-function loadQuestion(){
 
+    let q=currentQuestion;
 
 
-    // 临时根据模式筛题
 
-    if(questions.length===0){
+    let html=
 
 
-        if(mode==="special"){
+    "<h2>"+
 
+    "第"+
 
-            questions = questionBank.filter(
+    (currentIndex+1)
 
-                q=>q.category===category
+    +"题 【"+
 
-            );
+    q.category+
 
+    "】</h2>";
 
-        }else{
 
 
-            questions = questionBank;
+    html+=
 
 
-        }
+    "<h3>"+
 
+    q.q+
 
+    "</h3>";
 
-        // 数量限制
 
-        questions =
-        questions.slice(
-            0,
-            Math.min(
-                questionCount,
-                questions.length
-            )
-        );
 
-    }
 
 
+    q.options.forEach((op,i)=>{
 
 
+        html+=`
 
-    if(index>=questions.length){
-
-
-
-        socket.send(JSON.stringify({
-
-            type:"submit"
-
-        }));
-
-
-
-        document.getElementById(
-            "question"
-        )
-        .innerHTML=
-
-        "<h2>答题完成</h2>";
-
-
-
-        return;
-
-    }
-
-
-
-
-
-    let q =
-    questions[index];
-
-
-
-
-
-    let html =
-
-    `
-
-    <h2>
-
-    第${index+1}题
-
-    【${q.category}】
-
-    </h2>
-
-
-    <h3>
-
-    ${q.q}
-
-    </h3>
-
-    `;
-
-
-
-
-
-
-    q.options.forEach(
-
-    (op,i)=>{
-
-
-        html +=
-
-
-        `
 
         <button
 
@@ -1468,7 +958,9 @@ function loadQuestion(){
 
         onclick="answer(${i})">
 
+
         ${op}
+
 
         </button>
 
@@ -1480,11 +972,13 @@ function loadQuestion(){
 
 
 
-    document.getElementById(
-        "question"
-    )
-    .innerHTML=html;
 
+
+    document.getElementById(
+
+        "question"
+
+    ).innerHTML=html;
 
 
 }
@@ -1495,23 +989,37 @@ function loadQuestion(){
 
 
 
-// ====================
+// =========================
 // 答题
-// ====================
+// =========================
 
 
 function answer(choice){
 
 
 
-    let q =
-    questions[index];
+    if(!currentQuestion)return;
 
 
 
-    let correct =
 
-    choice===q.answer;
+    let buttons=
+
+    document.querySelectorAll(
+
+    ".optionBtn"
+
+    );
+
+
+
+    buttons.forEach(btn=>{
+
+
+        btn.disabled=true;
+
+
+    });
 
 
 
@@ -1519,11 +1027,14 @@ function answer(choice){
 
     socket.send(JSON.stringify({
 
+
+
         type:"answer",
 
-        choice:choice,
 
-        correct:correct
+
+        choice:choice
+
 
 
     }));
@@ -1531,41 +1042,17 @@ function answer(choice){
 
 
 
-
-
-    if(correct){
-
-
-        score+=100;
-
-
-    }
-
-
-
-
-
-    document.getElementById(
-        "score"
-    )
-    .innerHTML=
-
-    score;
-
-
-
-
-
-
-    index++;
-
-
-
-
     setTimeout(()=>{
 
 
-        loadQuestion();
+        document.getElementById(
+
+        "question"
+
+        ).innerHTML=
+
+
+        "等待下一题...";
 
 
 
@@ -1581,108 +1068,99 @@ function answer(choice){
 
 
 
-// ====================
-// 历史数据
-// 临时本地保存
-// 后续换数据库
-// ====================
+
+
+// =========================
+// 游戏结束
+// =========================
+
+
+socket.addEventListener(
+
+"message",
+
+function(e){
 
 
 
-function loadHistory(){
+let data=
 
-
-
-    let history =
-
-    JSON.parse(
-
-        localStorage.getItem(
-            "playerHistory"
-        )
-
-    )
-
-    ||
-
-    {
-
-
-        score:0,
-
-        games:0,
-
-        win:0
-
-
-    };
+JSON.parse(e.data);
 
 
 
 
+if(data.type==="finish"){
 
-    document.getElementById(
 
-        "scoreHistory"
 
-    )
+    alert(
 
-    .innerHTML=
+    "玩家"+
 
-    history.score;
+    data.player+
+
+    "提交完成"
+
+    );
+
+
+
+}
+
+
+
+});
 
 
 
 
 
-    document.getElementById(
-
-        "gameCount"
-
-    )
-
-    .innerHTML=
-
-    history.games;
 
 
 
 
-
-    let rate=0;
-
-
-
-    if(history.games>0){
+// =========================
+// 保存历史记录
+// =========================
 
 
-        rate=
-
-        Math.floor(
-
-        history.win /
-
-        history.games *
-
-        100
-
-        );
-
-
-    }
+function saveHistory(win){
 
 
 
-    document.getElementById(
+let history=
 
-        "winRate"
 
-    )
+JSON.parse(
 
-    .innerHTML=
+localStorage.getItem(
 
-    rate+"%";
+"pkHistory"
 
+)||
+
+'{"score":0,"count":0,"win":0}'
+
+);
+
+
+
+
+
+history.count++;
+
+
+
+
+
+if(win){
+
+
+history.score+=10;
+
+
+history.win++;
 
 
 }
@@ -1692,11 +1170,113 @@ function loadHistory(){
 
 
 
+localStorage.setItem(
 
-// 页面打开加载数据
+"pkHistory",
+
+JSON.stringify(history)
+
+);
+
+
+
+}
+
+
+
+
+
+// =========================
+// 加载历史记录
+// =========================
+
+
+function loadHistory(){
+
+
+
+let history=
+
+
+JSON.parse(
+
+localStorage.getItem(
+
+"pkHistory"
+
+)||
+
+'{"score":0,"count":0,"win":0}'
+
+);
+
+
+
+
+
+document.getElementById(
+
+"scoreHistory"
+
+).innerHTML=
+
+history.score;
+
+
+
+
+
+document.getElementById(
+
+"gameCount"
+
+).innerHTML=
+
+history.count;
+
+
+
+
+
+let rate=0;
+
+
+
+if(history.count>0){
+
+
+rate=
+
+Math.round(
+
+history.win/history.count*100
+
+);
+
+
+}
+
+
+
+
+document.getElementById(
+
+"winRate"
+
+).innerHTML=
+
+rate+"%";
+
+
+
+}
+
+
+
 
 
 loadHistory();
+
 
 
 
@@ -1704,6 +1284,5 @@ loadHistory();
 
 
 </body>
-
 
 </html>
