@@ -950,7 +950,81 @@ return;
 
 
 
+if(data.type==="gameResult"){
 
+
+
+let text="";
+
+
+
+if(data.result==="draw"){
+
+
+    text="🤝 平局";
+
+
+}
+
+else if(data.win){
+
+
+    text="🏆 恭喜获胜！";
+
+
+}
+
+else{
+
+
+    text="😢 本局失败";
+
+
+}
+
+
+
+
+
+
+document.getElementById("question")
+
+.innerHTML=
+
+
+`
+
+<h1>${text}</h1>
+
+<h2>
+你的积分：
+${data.myScore}
+</h2>
+
+
+<h2>
+对手积分：
+${data.enemyScore}
+</h2>
+
+
+`;
+
+
+
+
+
+// 保存历史
+
+
+saveHistory(data.win);
+
+
+
+return;
+
+
+}
 
 
 // 错误
